@@ -23,7 +23,9 @@ jar {
    }
 }
 
-repositories { mavenCentral() }
+repositories { 
+    mavenCentral() 
+}
 
 dependencies {
    compile 'org.fusesource.jansi:jansi:1.13'
