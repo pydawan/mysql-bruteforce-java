@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = 'v1.0.0'
+jar {
+   manifest {
+      attributes (
+         'Implementation-Title': '.:: MySQL Brute Force Attack writted in Java ::.',
+         'Implementation-Version': version,
+         'Main-Class': 'mysql.bruteforce.MySQLBruteForce'
+      )
+   }
+   // FAT JAR
+   doFirst {
+      from { 
+         configurations.runtime.collect { 
+            it.isDirectory() ? it : zipTree(it) 
+         } 
+      }
+   }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+   compile 'org.fusesource.jansi:jansi:1.13'
+   testCompile 'junit:junit:4.12'
+}
